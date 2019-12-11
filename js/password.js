@@ -8,9 +8,44 @@ var lwrCharSet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m
 var uprChar = confirm("Would you like uppercase characters?");
 var uprCharSet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var password = "";
+var pwComplexity = 0;
+
+function findPwComplexity(a, b, c, d) {
+    if (a === true) {
+        pwComplexity = pwComplexity + 1;
+    }
+    if (b === true) {
+        pwComplexity = pwComplexity + 1;
+    }
+    if (c === true) {
+        pwComplexity = pwComplexity + 1;
+    }
+    if (d === true) {
+        pwComplexity = pwComplexity + 1;
+    }
+    console.log(pwComplexity);
+}
+
+findPwComplexity(specChar, numChar, lwrChar, uprChar);
+
+// These if statements determine the complexity of the password
+// if (specChar === true) {
+//     pwComplexity = pwComplexity + 1;
+// }
+// if (numChar === true) {
+//     pwComplexity = pwComplexity + 1;
+// }
+// if (lwrChar === true) {
+//     pwComplexity = pwComplexity + 1;
+// }
+// if (uprChar === true) {
+//     pwComplexity = pwComplexity + 1;
+// }
+// console.log(pwComplexity);
+
+
 
 // random number pw generator
-
 // for (i = 0; i <= (pwLength - 1); i++) {
 //     num = Math.floor(Math.random() * 10) + 1;
 //     password = password + String(num);
@@ -28,11 +63,13 @@ var password = "";
 //     password = password + lwrCharSet[lwrCharVal];
 // }
 
-// random uprChar generator
-for (i = 0; i <= (pwLength - 1); i++) {
-    uprCharVal = Math.floor(Math.random() * 25) + 1;
-    password = password + uprCharSet[uprCharVal];
-}
+// // random uprChar generator
+// for (i = 0; i <= (pwLength - 1); i++) {
+//     uprCharVal = Math.floor(Math.random() * 25) + 1;
+//     password = password + uprCharSet[uprCharVal];
+// }
 
-console.log(password);
+// console.log(password);
+
+
 
