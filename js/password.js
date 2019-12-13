@@ -1,3 +1,4 @@
+//VARIABLE DECLARATIONS
 var pwLength = prompt("How long would you like for the password to be? Enter a number from 8 to 128.")
 console.log(pwLength);
 
@@ -18,7 +19,12 @@ var password = "";
 var userChoices = [specChar, numChar, lwrChar, uprChar];
 // charChoices is a collection of strings representing different characters the user can select for the password
 var charChoices = [specCharSet, numCharSet, lwrCharSet, uprCharSet];
+// pwChoices is an empty string
 var pwChoices = "";
+
+//--------------------------------------------------------------------------------------
+//FUNCTION DEFINITIONS
+//--------------------------------------------------------------------------------------
 
 // this function prevents the user from entering incorrect criteria for the pw
 function userPrompt() {
@@ -31,11 +37,8 @@ function userPrompt() {
         window.location.href = "index.html";
     }
 }
-userPrompt();
 
-//then choose randomly from those character sets
-//then fill the password array with those characters
-
+// this function adds character sets to the pwChoices array
 function findPwChoices() {
     if (specChar === true) {
         pwChoices = pwChoices + specCharSet;
@@ -51,8 +54,6 @@ function findPwChoices() {
     }
     return pwChoices;
 }
-findPwChoices();
-
 
 // this function fills the password array
 function pwFill(arr1, arr2) {
@@ -66,13 +67,16 @@ function pwFill(arr1, arr2) {
     return password;
 }
 
+//--------------------------------------------------------------------------------------
+// CALLING FUNCTIONS TO GENERATE PASSWORD
+//--------------------------------------------------------------------------------------
+userPrompt();
+findPwChoices();
 pwFill(pwChoices, pwLength);
 
-
-//TO-DO
-//Have the "Generate Password" button print the password to the body of the web page
-//Have the "Copy Password" button copy the password to the user's clipboard
-
+//--------------------------------------------------------------------------------------
+//BUTTONS
+//--------------------------------------------------------------------------------------
 var generatePwEl = document.getElementById("pw-generate");
 var copyPwEl = document.getElementById("pw-copy");
 
@@ -86,10 +90,6 @@ copyPwEl.addEventListener("click", function () {
     copyText.select();
     document.execCommand('copy');
     alert("Password copied to clipboard.");
-
-    // select the text in the p tag
-    // copy the selected text
-    // alert
 });
 
 
