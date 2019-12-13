@@ -1,54 +1,79 @@
 var pwLength = prompt("How long would you like for the password to be? Enter a number from 8 to 128.")
-var specChar = confirm("Would you like special characters?");
-var specCharSet = ["!", "#", "$", " % ", " & ", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", ",", "^", ",", "_", "`", "{", "|", "}", "~"]
-var numChar = confirm("Would you like numeric characters?");
-var numCharSet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-var lwrChar = confirm("Would you like lowercase characters?");
-var lwrCharSet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-var uprChar = confirm("Would you like uppercase characters?");
-var uprCharSet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-var password = "";
-var pwComplexity = 0;
-var userChoices = [specChar, numChar, lwrChar, uprChar]
+console.log(pwLength);
 
-function findPwComplexity(arr) {
-    for (i = 0; i <= (arr.length - 1); i++) {
-        if (arr[i] === true) {
-            pwComplexity = pwComplexity + 1;
-        }
+var specChar = confirm("Would you like special characters?");
+var numChar = confirm("Would you like numeric characters?");
+var lwrChar = confirm("Would you like lowercase characters?");
+var uprChar = confirm("Would you like uppercase characters?");
+
+
+var specCharSet = ["!#$%&'()*+,-./:;<=>?@\][^_`{|}~"];
+var numCharSet = ["1234567890"];
+var lwrCharSet = ["abcdefghijklmnopqrstuvwxyz"]
+var uprCharSet = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+
+
+var password = "";
+// userChoices is a boolean array of the prompt responses
+var userChoices = [specChar, numChar, lwrChar, uprChar];
+// charChoices is a collection of strings representing different characters the user can select for the password
+var charChoices = [specCharSet, numCharSet, lwrCharSet, uprCharSet];
+var pwChoices = "";
+
+// this function prevents the user from entering incorrect criteria for the pw
+function userPrompt() {
+    if (pwLength < 8 || pwLength > 128) {
+        alert("Please enter a number between 8 and 128.")
+        window.location.href = "index.html";
     }
-    console.log(pwComplexity);
+    if (specChar === false && numChar === false && lwrChar === false && uprChar === false) {
+        alert("Please at least one criteria for the password.")
+        window.location.href = "index.html";
+    }
+}
+userPrompt();
+
+//then choose randomly from those character sets
+//then fill the password array with those characters
+
+function findPwChoices() {
+    if (specChar === true) {
+        pwChoices = pwChoices + specCharSet;
+    }
+    if (lwrChar === true) {
+        pwChoices = pwChoices + lwrCharSet;
+    }
+    if (uprChar === true) {
+        pwChoices = pwChoices + uprCharSet;
+    }
+    if (numChar === true) {
+        pwChoices = pwChoices + numCharSet;
+    }
+    return pwChoices;
+}
+findPwChoices();
+
+
+// this function fills the password array
+function pwFill(arr1, arr2) {
+    // this goes counts up to the pwLength until it reaches the desired number
+    for (i = 0; i <= (arr2 - 1); i++) {
+        // the password character is a random number between 1 and the pwChoices array
+        pwChar = Math.floor(Math.random() * (pwChoices.length - 1));
+        // password is updated with the character in pwChoices' index that has pwChar's value
+        password = password + pwChoices.charAt(pwChar);
+    }
+    console.log(password);
+    console.log(password.length);
+    return password;
 }
 
-findPwComplexity(userChoices);
+pwFill(pwChoices, pwLength);
 
 
 
-// random number pw generator
-// for (i = 0; i <= (pwLength - 1); i++) {
-//     num = Math.floor(Math.random() * 10) + 1;
-//     password = password + String(num);
-// }
 
-// random specChar generator
-// for (i = 0; i <= (pwLength - 1); i++) {
-//     specCharVal = Math.floor(Math.random() * 31) + 1;
-//     password = password + specCharSet[specCharVal];
-// }
 
-// // random lwrChar generator
-// for (i = 0; i <= (pwLength - 1); i++) {
-//     lwrCharVal = Math.floor(Math.random() * 25) + 1;
-//     password = password + lwrCharSet[lwrCharVal];
-// }
-
-// // random uprChar generator
-// for (i = 0; i <= (pwLength - 1); i++) {
-//     uprCharVal = Math.floor(Math.random() * 25) + 1;
-//     password = password + uprCharSet[uprCharVal];
-// }
-
-// console.log(password);
 
 
 
