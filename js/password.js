@@ -63,17 +63,34 @@ function pwFill(arr1, arr2) {
         // password is updated with the character in pwChoices' index that has pwChar's value
         password = password + pwChoices.charAt(pwChar);
     }
-    console.log(password);
-    console.log(password.length);
     return password;
 }
 
 pwFill(pwChoices, pwLength);
 
 
+//TO-DO
+//Have the "Generate Password" button print the password to the body of the web page
+//Have the "Copy Password" button copy the password to the user's clipboard
 
+var generatePwEl = document.getElementById("pw-generate");
+var copyPwEl = document.getElementById("pw-copy");
 
+generatePwEl.addEventListener("click", function () {
+    document.querySelector("textarea").textContent = password;
+});
 
+copyPwEl.addEventListener("click", function () {
+    var copyText = document.querySelector("textarea");
+    copyText.focus();
+    copyText.select();
+    document.execCommand('copy');
+    alert("Password copied to clipboard.");
+
+    // select the text in the p tag
+    // copy the selected text
+    // alert
+});
 
 
 

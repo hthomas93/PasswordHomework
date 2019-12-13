@@ -8,31 +8,32 @@
     <title>Password Generator</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+        textarea {
+            display: block;
+            margin: 10px auto;
+            width: 75%;
+            height: auto;
+        }
+    </style>
 </head>
 
 <body>
     <div class="wrapper">
         <div class="card text-center">
             <div class="card-header">
-                Password Generator
+                <h1>Password Generator</h1>
             </div>
             <div class="card-body">
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi repellat voluptate
-                    atque fugiat cumque aliquid quos tenetur accusantium in! Quidem magnam placeat eligendi laudantium
-                    molestias, esse rerum aperiam. Illo, asperiores.</p>
-                <div class="btn btn-primary">Generate Password</div>
-                <div class="btn btn-primary">Copy Password</div>
+                <textarea class="card-text"></textarea>
+                <div class="btn btn-primary" id="pw-generate">Generate Password</div>
+                <div class="btn btn-primary" id="pw-copy">Copy Password</div>
             </div>
             <div class="card-footer text-muted">
             </div>
         </div>
     </div>
-
-    <!-- Prompt user to choose whether or not they want special characters -->
-    <!-- Prompt user to choose whether or not they want numeric characters -->
-    <!-- Prompt user to choose whether or not they want lowercase characters -->
-    <!-- Prompt user to choose whether or not they want uppercase characters -->
-    <!-- Print the generated password to card-text -->
 
     <script type="text/javascript" src="js/password.js"></script>
 </body>
